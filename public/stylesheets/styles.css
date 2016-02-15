@@ -87,30 +87,49 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 9, ../../sass/styles.scss */
 html {
   font-size: 10px;
-  background-color: #3e3c42;
 }
 
-/* line 14, ../../sass/styles.scss */
+/* line 13, ../../sass/styles.scss */
 body {
   font-size: 1.6rem;
   line-height: 2.1rem;
   margin: 0;
-  color: #3e3c42;
   width: 100%;
   height: 100%;
   min-width: 30rem;
   font-family: Verdana, arial, sans-serif;
 }
 
-/* line 25, ../../sass/styles.scss */
+/* line 23, ../../sass/styles.scss */
+header {
+  background-color: #3e3c42;
+  height: 8rem;
+  width: 100%;
+  color: #ffffff;
+  font-family: Courier, sans-serif;
+  display: table;
+  padding: 0 2rem;
+}
+
+/* line 33, ../../sass/styles.scss */
+.header {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 37, ../../sass/styles.scss */
+.header_logo {
+  font-size: 2.4rem;
+}
+
+/* line 43, ../../sass/styles.scss */
 .wrapper {
   margin: 0 auto;
   max-width: 70rem;
   height: auto;
-  margin-top: 6rem;
+  margin-top: 4rem;
 }
 
-/* line 32, ../../sass/styles.scss */
+/* line 50, ../../sass/styles.scss */
 .form {
   background-color: #ffffff;
   padding: 2rem;
@@ -121,19 +140,20 @@ body {
   position: relative;
   height: auto;
   min-height: 54rem;
+  border: 1px solid #ccc;
 }
-/* line 41, ../../sass/styles.scss */
+/* line 61, ../../sass/styles.scss */
 .form_input {
   display: block;
   padding: 1rem 0;
 }
-/* line 46, ../../sass/styles.scss */
+/* line 66, ../../sass/styles.scss */
 .form_input-label {
   display: inline-block;
   width: 23rem;
   font-size: 1.8rem;
 }
-/* line 52, ../../sass/styles.scss */
+/* line 72, ../../sass/styles.scss */
 .form_input-input {
   height: 5rem;
   display: inline-block;
@@ -142,19 +162,16 @@ body {
   outline: none;
   border: 1px solid #cccccc;
   background-color: #e5e5e5;
-  -moz-border-radius: 0.5rem;
-  -webkit-border-radius: 0.5rem;
-  border-radius: 0.5rem;
 }
-/* line 63, ../../sass/styles.scss */
+/* line 82, ../../sass/styles.scss */
 .form_input-input.error {
   border: 1px solid #e53e30;
 }
-/* line 67, ../../sass/styles.scss */
+/* line 86, ../../sass/styles.scss */
 .form_input-input:focus {
   background-color: #ffffff;
 }
-/* line 72, ../../sass/styles.scss */
+/* line 91, ../../sass/styles.scss */
 .form_submit {
   font-family: Courier, sans-serif;
   letter-spacing: .2rem;
@@ -165,17 +182,17 @@ body {
   margin: 2rem auto;
   display: block;
 }
-/* line 83, ../../sass/styles.scss */
+/* line 102, ../../sass/styles.scss */
 .form_submit:hover, .form_submit:focus {
   background-color: #61d395;
   border: 1px solid #2da162;
 }
-/* line 89, ../../sass/styles.scss */
+/* line 108, ../../sass/styles.scss */
 .form_submit:active {
   background-color: #39c87a;
   border-color: #22794a;
 }
-/* line 95, ../../sass/styles.scss */
+/* line 114, ../../sass/styles.scss */
 .form_error, .form_success {
   font-size: 1.4rem;
   text-align: right;
@@ -186,39 +203,39 @@ body {
   font-weight: 600;
   width: 100%;
 }
-/* line 106, ../../sass/styles.scss */
+/* line 125, ../../sass/styles.scss */
 .form_error.active, .active.form_success {
   height: 1.8rem;
 }
-/* line 111, ../../sass/styles.scss */
+/* line 130, ../../sass/styles.scss */
 .form_success {
   text-align: center;
   color: #61d395;
 }
-/* line 116, ../../sass/styles.scss */
+/* line 135, ../../sass/styles.scss */
 .form_success.active {
   height: 1.8rem;
 }
 
-/* line 124, ../../sass/styles.scss */
+/* line 143, ../../sass/styles.scss */
 .tablet .wrapper {
   max-width: 68rem;
 }
-/* line 130, ../../sass/styles.scss */
+/* line 149, ../../sass/styles.scss */
 .tablet .form_input-label {
   width: 39%;
 }
-/* line 133, ../../sass/styles.scss */
+/* line 152, ../../sass/styles.scss */
 .tablet .form_input-input {
   width: 59%;
 }
 
-/* line 146, ../../sass/styles.scss */
+/* line 165, ../../sass/styles.scss */
 .mobile .form_input-label {
   padding-bottom: 1.5rem;
   width: 100%;
 }
-/* line 150, ../../sass/styles.scss */
+/* line 169, ../../sass/styles.scss */
 .mobile .form_input-input {
   width: 100%;
 }
