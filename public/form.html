@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <script type="application/javascript" src="/js/animations.js"></script>
+    <link href="/stylesheets/reset.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+	<body>
+        <div class="wrapper">
+            <form name="credit-application" class="form" action="/application" method="Post"><!--onsubmit="submitForm(this)" -->
+                <span class="form_input">
+                    <label class="form_input-label" for="first-name">First Name </label>
+                    <input class="form_input-input" type="text" id="first-name"  name="first-name" tabindex="0">
+                </span>
+                <span class="form_input">
+                    <label class="form_input-label" for="last-name">Last Name </label>
+                    <input class="form_input-input" type="text" id="last-name"  name="last-name" tabindex="0">
+                </span>
+                <span class="form_input">
+                    <label class="form_input-label" for="address">Address</label>
+                    <input class="form_input-input" type="text" id="address" name="address" tabindex="0">
+                </span>
+                <span class="form_input">
+                    <label class="form_input-label" for="ssn">Social Security Number</label>
+                    <input class="form_input-input" type="text" id="ssn" name="ssn" tabindex="0">
+                </span>
+                <span class="form_input">
+                    <label class="form_input-label" for="email">Email</label>
+                    <input class="form_input-input" type="text" id="email" name="email" tabindex="0">
+                </span>
+                <span class="form_input">
+                    <label class="form_input-label" for="email-confirmation">Confirm Email</label>
+                    <input class="form_input-input" type="text" id="email-confirmation" name="email-confirmation" tabindex="0">
+                </span>
+                <button type="submit" value="Submit" class="form_submit" tabindex="0" id="submit">Submit</button>
+            </form>
+        </div>
+	</body>
+</html>
+<script type="application/javascript" src="/js/submit.js"></script>

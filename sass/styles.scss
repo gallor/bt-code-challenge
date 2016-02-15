@@ -1,0 +1,154 @@
+@import "compass/css3";
+@import "compass/reset";
+@import "variables";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    background-color: $dark;
+}
+
+body {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    margin: 0;
+    color: $base-textColor;
+    width: 100%;
+    height: 100%;
+    min-width: 30rem;
+    font-family: Verdana, arial, sans-serif;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 70rem;
+    height: auto;
+    margin-top: 6rem;
+}
+
+.form {
+    background-color: $white;
+    padding: 2rem;
+    margin: 0 2rem;
+    @include border-radius(.5rem);
+    position: relative;
+    height: auto;
+    min-height: 54rem;
+
+    &_input {
+        display: block;
+        padding: 1rem 0;
+    }
+
+    &_input-label {
+        display: inline-block;
+        width: 23rem;
+        font-size: 1.8rem;
+    }
+
+    &_input-input {
+        height: 5rem;
+        display: inline-block;
+        width: 38rem;
+        padding: 0 1rem;
+        outline: none;
+        border: 1px solid $medium-grey;
+        background-color: $light-grey;
+        @include border-radius(0.5rem);
+        @extend %standard-transition;
+
+        &.error {
+            border: 1px solid $error;
+        }
+
+        &:focus {
+            background-color: $white;
+        }
+    }
+
+    &_submit {
+        font-family: Courier, sans-serif;
+        letter-spacing: .2rem;
+        padding: 1rem 1.5rem;
+        background-color: $white;
+        border: 1px solid $medium-grey;
+        @extend %standard-transition;
+        outline: none;
+        margin: 2rem auto;
+        display: block;
+
+        &:hover,
+        &:focus {
+            background-color: $green;
+            border: 1px solid $green-border;
+        }
+
+        &:active {
+            background-color: darken($green, 10);
+            border-color: darken($green-border, 10);
+        }
+    }
+
+    &_error {
+        font-size: 1.4rem;
+        text-align: right;
+        @extend %standard-transition;
+        overflow: hidden;
+        height: 0rem;
+        display: block;
+        color: $error;
+        font-weight: 600;
+        width: 100%;
+
+        &.active  {
+            height: 1.8rem;
+        }
+    }
+
+    &_success {
+        @extend .form_error;
+        text-align: center;
+        color: $green;
+
+        &.active {
+            height: 1.8rem;
+        }
+    }
+}
+
+
+.tablet {
+    .wrapper {
+        max-width: 68rem;
+    }
+    .form {
+        &_input {
+        }
+        &_input-label {
+            width: 39%;
+        }
+        &_input-input {
+            width: 59%;
+        }
+        &_submit {
+        }
+    }
+}
+
+.mobile {
+   .form {
+       &_input {
+
+       }
+       &_input-label {
+           padding-bottom: 1.5rem;
+           width: 100%;
+       }
+       &_input-input {
+           width: 100%;
+       }
+   }
+}

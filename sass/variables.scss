@@ -1,0 +1,25 @@
+// Colors
+$white: #ffffff;
+$dark: #3e3c42;
+$light-grey: #e5e5e5;
+$medium-grey: #cccccc;
+$error: #e53e30;
+$green: #61d395;
+$green-border: #2da162;
+
+
+// Fonts
+$base-rem: 10px;
+$base-font-size: 1.6rem;
+$base-line-height: 2.1rem;
+$base-textColor: $dark;
+
+$base-border-color: #ccc;
+
+
+// mixins
+%standard-transition {
+    @include transition-property(all);
+    @include transition-duration(200ms);
+    @include transition-timing-function(cubic-bezier(0.22, 0.44, 0, 1));
+}
