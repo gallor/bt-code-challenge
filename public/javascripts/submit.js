@@ -34,7 +34,7 @@ var insertErrorEl = function(el, errText) {
 };
 
 // Removing error message from DOM
-var removeErrorEl = function(parentEl, childEl) {
+var removeEl = function(parentEl, childEl) {
     childEl.classList.remove('active');
     setTimeout(function() {
         parentEl.removeChild(childEl);
@@ -42,15 +42,14 @@ var removeErrorEl = function(parentEl, childEl) {
 };
 
 // Inserting success message to DOM
-var insertSuccessEl = function(el, successText) {
-    var docFragment = msgFactory("form_success", successText);
+var insertSuccessEl = function(el, successText, successId) {
+    var docFragment = msgFactory("form_success", successText, successId);
 
     el.appendChild(docFragment[0]);
     setTimeout(function() {
         docFragment[1].classList.add('active');
     }, 100);
 };
-
 
 
 /* Validations
@@ -216,16 +215,15 @@ form.addEventListener("blur", function(event) {
     if(!(isValid || isErrorPresent)) {
         inputEl.classList.add('error');
         insertErrorEl(parentEl, errText);
-        data[id] = null;
+        data[id] = "";
         pristine = false;
     } else if(!isValid && isErrorPresent && (replaceErr || !pristine)) { // if error, new value, fails validation, remove old error, add new error, ensure data is clean
-        removeErrorEl(parentEl, parentEl.lastChild);
+        removeEl(parentEl, parentEl.lastChild);
         insertErrorEl(parentEl, errText);
-
-        data[id] = null;
+        data[id] = "";
     } else if(isValid && isErrorPresent) { //if error, passes validation, remove error add add key value to data model
         inputEl.classList.remove('error');
-        removeErrorEl(parentEl, parentEl.lastChild);
+        removeEl(parentEl, parentEl.lastChild);
         data[id] = value;
     } else if(isValid && !isErrorPresent) { // if no error and passes validation, add to data model
         data[id] = value;
@@ -240,10 +238,12 @@ form.addEventListener("blur", function(event) {
  * XMLHttpRequest object to instantiate an asynchronous call to the server.
  *
  * Prevention of multiple form submissions while the ajax call is being made is handled by
- * isSubmitAction variable. If true, any other submit is aborted
+ * isSubmitAction variable. If true, any other submit is aborted.
  *
  * Errors are returned and printed to the client console.
- * Success msg is created and appended the client form if request is successful
+ * Success msg is created and appended the client form if request is successful.
+ *
+ * If form is modified after successful submission and is in error, success message is removed.
  */
 form.addEventListener("submit", function(event){
 
@@ -265,12 +265,17 @@ form.addEventListener("submit", function(event){
         if(request.readyState === 4 && request.status === 201) {
             console.log(JSON.parse(this.response)["msg"]);
             isSubmitActive = true;
-            insertSuccessEl(form, JSON.parse(this.response)["msg"]);
-        } else if(request.readyState === 4 && request.status === 400) {
+            insertSuccessEl(form, JSON.parse(this.response)["msg"], "success");
+        } else if(request.readyState === 4 && request.status === 400 && request.responseText !== "{}") {
             var response = JSON.parse(request.responseText);
             for(var i = 0; i < response.length; i++) {
                 console.log(response[i]["msg"]);
             }
+            insertErrorEl(form, "Error submitting form, please try again");
+            isSubmitActive = true;
+        } else if(request.readyState === 4 && request.status === 400 && request.responseText === "{}") {
+            insertErrorEl(form, "Error submitting form, please try again");
+            console.log("Error submitting form");
             isSubmitActive = true;
         }
     };
@@ -278,3 +283,12 @@ form.addEventListener("submit", function(event){
     request.send(JSON.stringify(data));
 
 }, false);
+
+/*
+ * Quick event listener to remove any success or error messaging at the bottom of the form
+ */
+form.addEventListener("focus", function() {
+    if(form.lastChild.id === "success" || form.lastChild.id === "error") {
+        removeEl(form, form.lastChild);
+    }
+}, true);
