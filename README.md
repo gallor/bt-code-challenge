@@ -1,6 +1,8 @@
-# Grant Allor's Submission
+# Form Validation Coding Challenge 
 
-The following files and folders constitute my submission for BrainTree's Coding Challenge:
+The following files and folders constitute my submission for a coding challenge to
+implement a form with live client side-validation and validating backend server that
+returns 201 on successful submit and 400 on invalid submit:
 
 - _spec/_ - Jasmine testing files for server
 - _public/_ - public facing JS, HTML and CSS files served to the browser
